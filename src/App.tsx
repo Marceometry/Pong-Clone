@@ -1,7 +1,13 @@
+import { useEffect } from 'react'
 import { Ball, Score } from './components'
+import { Game } from './scripts'
 import './styles/main.css'
 
 export function App() {
+  useEffect(() => {
+    Game.start()
+  }, [])
+
   return (
     <div>
       <Score />
