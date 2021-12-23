@@ -1,4 +1,4 @@
-import { Score } from './components'
+import { Ball, Score } from './components'
 import './styles/main.css'
 
 export function App() {
@@ -6,7 +6,7 @@ export function App() {
     <div>
       <Score />
 
-      <div className='ball' id='ball'></div>
+      <Ball />
       <div className='paddle left' id='player-paddle'></div>
       <div className='paddle right' id='computer-paddle'></div>
     </div>
