@@ -4,8 +4,6 @@ import './styles.css'
 export function Score() {
   const { score } = useGame()
 
-  console.log(score)
-
   return (
     <div className='score'>
       <div id='player-score'>{score[0]}</div>
