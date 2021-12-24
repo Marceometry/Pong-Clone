@@ -1,5 +1,10 @@
+import { RefObject } from 'react'
 import './styles.css'
 
-export function Ball() {
-  return <div id='ball' className='ball' />
+type BallProps = {
+  ballRef: RefObject<HTMLDivElement>
+}
+
+export function Ball({ ballRef }: BallProps) {
+  return <div ref={ballRef} id='ball' className='ball' />
 }
