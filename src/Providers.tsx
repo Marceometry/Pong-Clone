@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
-import { GameContextProvider } from './contexts'
+import { GameProvider } from './contexts'
 
 export type ProvidersProps = {
   children: ReactNode
 }
 
 export function Providers({ children }: ProvidersProps) {
-  return <GameContextProvider>{children}</GameContextProvider>
+  return <GameProvider>{children}</GameProvider>
 }

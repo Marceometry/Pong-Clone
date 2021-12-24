@@ -1,10 +1,6 @@
 import { createContext, useContext } from 'react'
-
-export type GameContextData = {
-  isLoading: boolean
-  setIsLoading: (isLoading: boolean) => void
-}
+import { GameContextData } from '.'
 
 export const GameContext = createContext({} as GameContextData)
 
-export const useGameContext = () => useContext(GameContext)
+export const useGame = () => useContext(GameContext)
