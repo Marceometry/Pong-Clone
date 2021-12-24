@@ -1,15 +1,15 @@
 import { useState } from 'react'
-import { Ball, Paddle } from '../../scripts'
-import { GameContext, GameContextProviderProps, Score } from '.'
+import { Score, setHueColor } from '../../utils'
+import { GameContext, GameContextProviderProps, Ball, Paddle } from '.'
 
 export function GameProvider({ children }: GameContextProviderProps) {
   const [score, setScore] = useState<Score>([0, 0])
   const [isGameRunning, setIsGameRunning] = useState(false)
 
   function start(
-    ballRef: HTMLElement,
-    playerPaddleRef: HTMLElement,
-    computerPaddleRef: HTMLElement
+    ballRef: HTMLDivElement,
+    playerPaddleRef: HTMLDivElement,
+    computerPaddleRef: HTMLDivElement
   ) {
     const ball = new Ball(ballRef)
     const playerPaddle = new Paddle(playerPaddleRef)
@@ -19,16 +19,11 @@ export function GameProvider({ children }: GameContextProviderProps) {
     function update(time: number) {
       if (lastTime != null) {
         const delta = time - lastTime
+
         ball.update(delta, [playerPaddle.rect(), computerPaddle.rect()])
         computerPaddle.update(delta, ball.y)
-        const hue = parseFloat(
-          getComputedStyle(document.documentElement).getPropertyValue('--hue')
-        )
 
-        document.documentElement.style.setProperty(
-          '--hue',
-          String(hue + delta * 0.01)
-        )
+        setHueColor(delta)
 
         if (isLose()) handleLose()
       }

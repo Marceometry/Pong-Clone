@@ -1,24 +1,24 @@
-const SPEED = 0.02
+import { COMPUTER_PADDLE_SPEED } from '../../utils'
 
 export class Paddle {
-  paddleElem
+  paddleElem: HTMLDivElement
 
-  constructor(paddleElem: HTMLElement) {
+  constructor(paddleElem: HTMLDivElement) {
     this.paddleElem = paddleElem
     this.reset()
   }
 
-  get position() {
+  get position(): number {
     return parseFloat(
       getComputedStyle(this.paddleElem).getPropertyValue('--position')
     )
   }
 
-  set position(value) {
+  set position(value: number) {
     this.paddleElem.style.setProperty('--position', String(value))
   }
 
-  rect() {
+  rect(): DOMRect {
     return this.paddleElem.getBoundingClientRect()
   }
 
@@ -27,6 +27,7 @@ export class Paddle {
   }
 
   update(delta: number, ballHeight: number) {
-    this.position += SPEED * delta * (ballHeight - this.position)
+    this.position +=
+      COMPUTER_PADDLE_SPEED * delta * (ballHeight - this.position)
   }
 }

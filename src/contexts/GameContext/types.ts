@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { Score } from '../../utils/types'
 
 export type GameContextData = {
   score: Score
@@ -6,14 +7,12 @@ export type GameContextData = {
   isGameRunning: boolean
   setIsGameRunning: (isRunning: boolean) => void
   start: (
-    ballRef: HTMLElement,
-    playerPaddleRef: HTMLElement,
-    computerPaddleRef: HTMLElement
+    ballRef: HTMLDivElement,
+    playerPaddleRef: HTMLDivElement,
+    computerPaddleRef: HTMLDivElement
   ) => void
 }
 
 export type GameContextProviderProps = {
   children: ReactNode
 }
-
-export type Score = [number, number]
