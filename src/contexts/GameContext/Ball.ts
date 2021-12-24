@@ -4,7 +4,7 @@ import {
   isCollision,
   BALL_INITIAL_VELOCITY,
   BALL_VELOCITY_INCREASE,
-} from '../../utils'
+} from '@/utils'
 
 export class Ball {
   ballElem: HTMLDivElement

@@ -1,4 +1,4 @@
-import { useGame } from '../../contexts'
+import { useGame } from '@/contexts'
 import './styles.css'
 
 export function Score() {

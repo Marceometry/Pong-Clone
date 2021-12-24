@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
-import { Ball, Paddle, Score } from './components'
-import { useGame } from './contexts'
+import { Ball, Paddle, Score } from '@/components'
+import { useGame } from '@/contexts'
 import './styles/main.css'
 
 export function App() {

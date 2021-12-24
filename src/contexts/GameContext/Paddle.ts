@@ -1,4 +1,4 @@
-import { COMPUTER_PADDLE_SPEED } from '../../utils'
+import { COMPUTER_PADDLE_SPEED } from '@/utils'
 
 export class Paddle {
   paddleElem: HTMLDivElement
