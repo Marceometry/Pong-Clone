@@ -1,0 +1,4 @@
+export const BALL_INITIAL_VELOCITY = 0.025
+export const BALL_VELOCITY_INCREASE = 0.00001
+
+export const COMPUTER_PADDLE_SPEED = 0.02
