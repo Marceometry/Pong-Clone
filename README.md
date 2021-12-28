@@ -21,7 +21,7 @@ Baseado no [video](https://www.youtube.com/watch?v=PeY6lXPrPaA&t=2109s) do canal
 
 ## 💣 Funcionalidades
 
-- Menu de modos de jogo
+- Menu de modos de jogo animado
 - Modo de jogo `Watch Mode`
 - Timing antes de começar a partida
 
