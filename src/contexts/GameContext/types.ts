@@ -1,10 +1,15 @@
 import { ReactNode } from 'react'
-import { Score } from '../../utils/types'
+import { Score } from '@/utils'
+
+export type GameState = {
+  isGameRunning: boolean
+  score: Score
+}
 
 export type GameContextData = {
-  score: Score
-  isGameRunning: boolean
-  start: (
+  gameState: GameState
+  start: () => void
+  setUp: (
     ballRef: HTMLDivElement,
     playerPaddleRef: HTMLDivElement,
     computerPaddleRef: HTMLDivElement

@@ -2,12 +2,12 @@ import { useGame } from '@/contexts'
 import './styles.css'
 
 export function Score() {
-  const { score } = useGame()
+  const { gameState } = useGame()
 
   return (
     <div className='score'>
-      <div id='player-score'>{score[0]}</div>
-      <div id='computer-score'>{score[1]}</div>
+      <div id='player-score'>{gameState.score[0]}</div>
+      <div id='computer-score'>{gameState.score[1]}</div>
     </div>
   )
 }

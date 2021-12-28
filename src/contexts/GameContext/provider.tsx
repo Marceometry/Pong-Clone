@@ -1,26 +1,34 @@
 import { useState } from 'react'
-import { Score } from '../../utils'
-import { GameContext, GameContextProviderProps } from '.'
 import { Game } from '@/game'
+import { GameContext, GameContextProviderProps, GameState } from '.'
 
 export function GameProvider({ children }: GameContextProviderProps) {
-  const [score, setScore] = useState<Score>([0, 0])
-  const [isGameRunning, setIsGameRunning] = useState(false)
+  const [gameState, setGameState] = useState<GameState>({
+    isGameRunning: false,
+    score: [0, 0],
+  })
 
-  function start(
+  const game = new Game(setGameState)
+
+  function setUp(
     ballRef: HTMLDivElement,
     playerPaddleRef: HTMLDivElement,
     computerPaddleRef: HTMLDivElement
   ) {
-    const gameConfig = { ballRef, playerPaddleRef, computerPaddleRef, setScore }
-    const game = new Game(gameConfig)
+    game.setUp({ ballRef, playerPaddleRef, computerPaddleRef })
 
+    setGameState((prevState) => ({
+      ...prevState,
+      isGameRunning: true,
+    }))
+  }
+
+  function start() {
     game.start()
-    setIsGameRunning(true)
   }
 
   return (
-    <GameContext.Provider value={{ start, score, isGameRunning }}>
+    <GameContext.Provider value={{ setUp, start, gameState }}>
       {children}
     </GameContext.Provider>
   )
