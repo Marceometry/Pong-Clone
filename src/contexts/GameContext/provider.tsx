@@ -13,9 +13,10 @@ export function GameProvider({ children }: GameContextProviderProps) {
   function setUp(
     ballRef: HTMLDivElement,
     playerPaddleRef: HTMLDivElement,
-    computerPaddleRef: HTMLDivElement
+    computerPaddleRef: HTMLDivElement,
+    isWatch: boolean
   ) {
-    game.setUp({ ballRef, playerPaddleRef, computerPaddleRef })
+    game.setUp({ ballRef, playerPaddleRef, computerPaddleRef, isWatch })
 
     setGameState((prevState) => ({
       ...prevState,

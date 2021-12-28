@@ -12,7 +12,8 @@ export type GameContextData = {
   setUp: (
     ballRef: HTMLDivElement,
     playerPaddleRef: HTMLDivElement,
-    computerPaddleRef: HTMLDivElement
+    computerPaddleRef: HTMLDivElement,
+    isWatch: boolean
   ) => void
 }
 
