@@ -7,6 +7,7 @@ export class Game {
   playerPaddle: Paddle = null as any
   computerPaddle: Paddle = null as any
   lastTime: number = 0
+  timeStarted: number = 0
   score: Score = [0, 0]
   setGameState: React.Dispatch<React.SetStateAction<GameState>>
 
@@ -18,7 +19,6 @@ export class Game {
     this.ball = new Ball(ballRef)
     this.playerPaddle = new Paddle(playerPaddleRef)
     this.computerPaddle = new Paddle(computerPaddleRef)
-    this.lastTime = 0
   }
 
   start() {
@@ -29,19 +29,21 @@ export class Game {
   }
 
   update(time: number) {
-    const delta = time - this.lastTime - GAME_START_TIMER
+    if (this.lastTime != 0) {
+      const delta = time - this.lastTime
 
-    this.computerPaddle.update(delta, this.ball.y)
-    this.ball.update(delta, [
-      this.playerPaddle.rect(),
-      this.computerPaddle.rect(),
-    ])
+      this.computerPaddle.update(delta, this.ball.y)
+      this.ball.update(delta, [
+        this.playerPaddle.rect(),
+        this.computerPaddle.rect(),
+      ])
 
-    setHueColor(delta)
+      setHueColor(delta)
 
-    if (this.isLose()) this.handleLose()
+      if (this.isLose()) this.handleLose()
+    }
 
-    this.lastTime = time - GAME_START_TIMER
+    this.lastTime = time
     window.requestAnimationFrame((time) => this.update(time))
   }
 
