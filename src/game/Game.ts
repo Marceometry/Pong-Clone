@@ -1,6 +1,13 @@
 import { GameState } from '@/contexts'
 import { GAME_START_TIMER, Score } from '@/utils'
-import { Ball, GameSetUp, Paddle, setUpListeners } from '.'
+import {
+  Ball,
+  GameConstructor,
+  GameOptions,
+  GameSetUp,
+  Paddle,
+  setUpListeners,
+} from '.'
 
 export class Game {
   ball: Ball = null as any
@@ -9,23 +16,23 @@ export class Game {
   lastTime: number = 0
   timeStarted: number = 0
   score: Score = [0, 0]
-  isWatch: boolean = false
+  options: GameOptions = {}
   setGameState: React.Dispatch<React.SetStateAction<GameState>>
 
-  constructor(setGameState: React.Dispatch<React.SetStateAction<GameState>>) {
+  constructor(setGameState: GameConstructor) {
     this.setGameState = setGameState
   }
 
-  setUp({ ballRef, playerPaddleRef, computerPaddleRef, isWatch }: GameSetUp) {
-    this.ball = new Ball(ballRef)
+  setUp({ ballRef, playerPaddleRef, computerPaddleRef, options }: GameSetUp) {
+    this.ball = new Ball(ballRef, !!options?.isFixedVelocity)
     this.playerPaddle = new Paddle(playerPaddleRef)
     this.computerPaddle = new Paddle(computerPaddleRef)
-    this.isWatch = isWatch
+    this.options = options ?? {}
   }
 
   start() {
     setTimeout(() => {
-      !this.isWatch && setUpListeners(this.playerPaddle)
+      !this.options.isWatch && setUpListeners(this.playerPaddle)
       window.requestAnimationFrame((time) => this.update(time))
     }, GAME_START_TIMER)
   }
@@ -34,7 +41,7 @@ export class Game {
     if (this.lastTime != 0) {
       const delta = time - this.lastTime
 
-      this.isWatch && this.playerPaddle.update(delta, this.ball.y)
+      this.options.isWatch && this.playerPaddle.update(delta, this.ball.y)
       this.computerPaddle.update(delta, this.ball.y)
       this.ball.update(delta, [
         this.playerPaddle.rect(),

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Game } from '@/game'
+import { Game, GameOptions } from '@/game'
 import { GameContext, GameContextProviderProps, GameState } from '.'
 
 export function GameProvider({ children }: GameContextProviderProps) {
@@ -14,9 +14,9 @@ export function GameProvider({ children }: GameContextProviderProps) {
     ballRef: HTMLDivElement,
     playerPaddleRef: HTMLDivElement,
     computerPaddleRef: HTMLDivElement,
-    isWatch: boolean
+    options: GameOptions
   ) {
-    game.setUp({ ballRef, playerPaddleRef, computerPaddleRef, isWatch })
+    game.setUp({ ballRef, playerPaddleRef, computerPaddleRef, options })
 
     setGameState((prevState) => ({
       ...prevState,

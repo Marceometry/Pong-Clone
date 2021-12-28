@@ -10,9 +10,11 @@ export class Ball {
   ballElem: HTMLDivElement
   direction: Vector = { x: 0, y: 0 }
   velocity: number = 0
+  isFixedVelocity: boolean = false
 
-  constructor(ballElem: HTMLDivElement) {
+  constructor(ballElem: HTMLDivElement, isFixedVelocity: boolean) {
     this.ballElem = ballElem
+    this.isFixedVelocity = isFixedVelocity
     this.reset()
   }
 
@@ -54,7 +56,8 @@ export class Ball {
   update(delta: number, paddleRects: DOMRect[]) {
     this.x += this.direction.x * this.velocity * delta
     this.y += this.direction.y * this.velocity * delta
-    this.velocity += BALL_VELOCITY_INCREASE * delta
+    if (!this.isFixedVelocity) this.velocity += BALL_VELOCITY_INCREASE * delta
+
     const rect = this.rect()
 
     if (rect.bottom >= window.innerHeight || rect.top <= 0) {

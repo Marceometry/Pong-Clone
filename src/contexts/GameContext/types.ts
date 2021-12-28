@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { Score } from '@/utils'
+import { GameOptions } from '@/game'
 
 export type GameState = {
   isGameRunning: boolean
@@ -13,7 +14,7 @@ export type GameContextData = {
     ballRef: HTMLDivElement,
     playerPaddleRef: HTMLDivElement,
     computerPaddleRef: HTMLDivElement,
-    isWatch: boolean
+    options: GameOptions
   ) => void
 }
 

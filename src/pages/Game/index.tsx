@@ -23,7 +23,7 @@ export function Game({ isWatch = false }: GameProps) {
         ballRef.current as HTMLDivElement,
         playerPaddleRef.current as HTMLDivElement,
         computerPaddleRef.current as HTMLDivElement,
-        isWatch
+        { isWatch }
       )
 
       start()
