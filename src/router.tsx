@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { GameProvider } from './contexts'
 import { Game, Home } from './pages'
 
 export function Router() {
@@ -6,7 +7,24 @@ export function Router() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
-        <Route path='/play' element={<Game />} />
+
+        <Route
+          path='/play'
+          element={
+            <GameProvider>
+              <Game />
+            </GameProvider>
+          }
+        />
+
+        <Route
+          path='/watch'
+          element={
+            <GameProvider>
+              <Game isWatch />
+            </GameProvider>
+          }
+        />
       </Routes>
     </BrowserRouter>
   )

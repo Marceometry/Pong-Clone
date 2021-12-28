@@ -1,11 +1,23 @@
-import { Providers } from './Providers'
+import { useRef, useEffect } from 'react'
+import { setHueColor } from './utils'
 import { Router } from './router'
 import './styles/main.css'
 
 export function App() {
-  return (
-    <Providers>
-      <Router />
-    </Providers>
-  )
+  const animationId = useRef(0)
+
+  useEffect(() => {
+    window.requestAnimationFrame(handleHueColor)
+
+    return () => {
+      window.cancelAnimationFrame(animationId.current)
+    }
+  }, [])
+
+  function handleHueColor() {
+    setHueColor(20)
+    animationId.current = window.requestAnimationFrame(handleHueColor)
+  }
+
+  return <Router />
 }
