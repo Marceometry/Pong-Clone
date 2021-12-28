@@ -1,48 +1,47 @@
-import { Score, setHueColor } from '@/utils'
+import { GameState } from '@/contexts'
+import { GAME_START_TIMER, Score, setHueColor } from '@/utils'
 import { Ball, GameConstructor, Paddle, setUpListeners } from '.'
 
 export class Game {
-  ball: Ball
-  playerPaddle: Paddle
-  computerPaddle: Paddle
-  lastTime: number
+  ball: Ball = null as any
+  playerPaddle: Paddle = null as any
+  computerPaddle: Paddle = null as any
+  lastTime: number = 0
   score: Score = [0, 0]
-  setScore: (score: Score) => void
+  setGameState: React.Dispatch<React.SetStateAction<GameState>>
 
-  constructor({
-    ballRef,
-    playerPaddleRef,
-    computerPaddleRef,
-    setScore,
-  }: GameConstructor) {
+  constructor(setGameState: React.Dispatch<React.SetStateAction<GameState>>) {
+    this.setGameState = setGameState
+  }
+
+  setUp({ ballRef, playerPaddleRef, computerPaddleRef }: GameConstructor) {
     this.ball = new Ball(ballRef)
     this.playerPaddle = new Paddle(playerPaddleRef)
     this.computerPaddle = new Paddle(computerPaddleRef)
-    this.setScore = setScore
     this.lastTime = 0
   }
 
   start() {
-    setUpListeners(this.playerPaddle)
-    window.requestAnimationFrame((time) => this.update(time))
+    setTimeout(() => {
+      setUpListeners(this.playerPaddle)
+      window.requestAnimationFrame((time) => this.update(time))
+    }, GAME_START_TIMER)
   }
 
   update(time: number) {
-    if (this.lastTime != null) {
-      const delta = time - this.lastTime
+    const delta = time - this.lastTime - GAME_START_TIMER
 
-      this.ball.update(delta, [
-        this.playerPaddle.rect(),
-        this.computerPaddle.rect(),
-      ])
-      this.computerPaddle.update(delta, this.ball.y)
+    this.computerPaddle.update(delta, this.ball.y)
+    this.ball.update(delta, [
+      this.playerPaddle.rect(),
+      this.computerPaddle.rect(),
+    ])
 
-      setHueColor(delta)
+    setHueColor(delta)
 
-      if (this.isLose()) this.handleLose()
-    }
+    if (this.isLose()) this.handleLose()
 
-    this.lastTime = time
+    this.lastTime = time - GAME_START_TIMER
     window.requestAnimationFrame((time) => this.update(time))
   }
 
@@ -56,10 +55,16 @@ export class Game {
 
     if (rect.right >= window.innerWidth) {
       this.score = [this.score[0] + 1, this.score[1]]
-      this.setScore(this.score)
+      this.setGameState((prevState) => ({
+        ...prevState,
+        score: this.score,
+      }))
     } else {
       this.score = [this.score[0], this.score[1] + 1]
-      this.setScore(this.score)
+      this.setGameState((prevState) => ({
+        ...prevState,
+        score: this.score,
+      }))
     }
 
     this.ball.reset()

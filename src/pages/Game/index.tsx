@@ -1,26 +1,39 @@
 import { useRef, useEffect } from 'react'
-import { Ball, Paddle, Score } from '@/components'
 import { useGame } from '@/contexts'
+import { Ball, Paddle, Score, Timer } from '@/components'
 
 export function Game() {
   const ballRef = useRef<HTMLDivElement>(null)
   const playerPaddleRef = useRef<HTMLDivElement>(null)
   const computerPaddleRef = useRef<HTMLDivElement>(null)
-  const { start, isGameRunning } = useGame()
+  const { setUp, start, gameState } = useGame()
 
   useEffect(() => {
     if (
       ballRef.current &&
       playerPaddleRef.current &&
       computerPaddleRef.current &&
-      !isGameRunning
+      !gameState.isGameRunning
     ) {
-      start(ballRef.current, playerPaddleRef.current, computerPaddleRef.current)
+      setUp(
+        ballRef.current as HTMLDivElement,
+        playerPaddleRef.current as HTMLDivElement,
+        computerPaddleRef.current as HTMLDivElement
+      )
+
+      start()
     }
-  }, [ballRef.current, playerPaddleRef.current, computerPaddleRef.current])
+  }, [
+    ballRef.current,
+    playerPaddleRef.current,
+    computerPaddleRef.current,
+    gameState.isGameRunning,
+  ])
 
   return (
     <div>
+      <Timer />
+
       <Score />
 
       <Ball ballRef={ballRef} />

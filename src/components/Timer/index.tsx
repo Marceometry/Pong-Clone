@@ -19,7 +19,7 @@ export function Timer() {
 
   return (
     <>
-      {timer && (
+      {!!timer && (
         <div className='timer'>
           <h1>{timer}</h1>
         </div>
