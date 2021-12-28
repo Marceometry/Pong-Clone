@@ -1,5 +1,5 @@
 import { GameState } from '@/contexts'
-import { GAME_START_TIMER, Score, setHueColor } from '@/utils'
+import { GAME_START_TIMER, Score } from '@/utils'
 import { Ball, GameConstructor, Paddle, setUpListeners } from '.'
 
 export class Game {
@@ -37,8 +37,6 @@ export class Game {
         this.playerPaddle.rect(),
         this.computerPaddle.rect(),
       ])
-
-      setHueColor(delta)
 
       if (this.isLose()) this.handleLose()
     }
