@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Background } from './background'
 import './styles.css'
 
 export function Home() {
@@ -12,6 +13,8 @@ export function Home() {
       </div>
 
       <span>Made by Marcelino Teixeira</span>
+
+      <Background />
     </div>
   )
 }
