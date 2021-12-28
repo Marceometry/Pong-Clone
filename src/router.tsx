@@ -6,14 +6,7 @@ export function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          index
-          element={
-            <GameProvider>
-              <Home />
-            </GameProvider>
-          }
-        />
+        <Route index element={<Home />} />
 
         <Route
           path='/play'

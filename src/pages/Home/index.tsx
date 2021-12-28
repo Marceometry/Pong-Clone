@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { GameProvider } from '@/contexts'
 import { Background } from './background'
 import './styles.css'
 
@@ -14,7 +15,9 @@ export function Home() {
 
       <span>Made by Marcelino Teixeira</span>
 
-      <Background />
+      <GameProvider>
+        <Background />
+      </GameProvider>
     </div>
   )
 }
