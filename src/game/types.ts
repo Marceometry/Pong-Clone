@@ -12,4 +12,5 @@ export type GameSetUp = {
 export type GameOptions = {
   isWatch?: boolean
   isFixedVelocity?: boolean
+  gameStartTimer?: number
 }

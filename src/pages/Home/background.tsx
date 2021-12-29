@@ -19,7 +19,7 @@ export function Background() {
         ballRef.current as HTMLDivElement,
         playerPaddleRef.current as HTMLDivElement,
         computerPaddleRef.current as HTMLDivElement,
-        { isWatch: true, isFixedVelocity: true }
+        { isWatch: true, isFixedVelocity: true, gameStartTimer: 1000 }
       )
 
       start()

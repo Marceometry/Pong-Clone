@@ -10,14 +10,17 @@ import {
 } from '.'
 
 export class Game {
+  setGameState: React.Dispatch<React.SetStateAction<GameState>>
+
   ball: Ball = null as any
   playerPaddle: Paddle = null as any
   computerPaddle: Paddle = null as any
-  lastTime: number = 0
-  timeStarted: number = 0
+
   score: Score = [0, 0]
   options: GameOptions = {}
-  setGameState: React.Dispatch<React.SetStateAction<GameState>>
+
+  lastTime: number = 0
+  timeStarted: number = 0
 
   constructor(setGameState: GameConstructor) {
     this.setGameState = setGameState
@@ -34,7 +37,7 @@ export class Game {
     setTimeout(() => {
       !this.options.isWatch && setUpListeners(this.playerPaddle)
       window.requestAnimationFrame((time) => this.update(time))
-    }, GAME_START_TIMER)
+    }, this.options.gameStartTimer ?? GAME_START_TIMER)
   }
 
   update(time: number) {
