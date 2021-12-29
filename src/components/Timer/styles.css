@@ -1,5 +1,5 @@
 .timer {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #000000b3;
   z-index: 100;
 
   display: flex;
@@ -16,4 +16,5 @@
 .timer h1 {
   font-size: 128px;
   color: var(--foreground-color);
+  user-select: none;
 }
