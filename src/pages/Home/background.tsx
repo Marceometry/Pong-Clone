@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
-import { Ball, Paddle, Score, Timer } from '@/components'
+import { Ball, Paddle } from '@/components'
 import { useGame } from '@/contexts'
+import { GameOptions } from '@/game'
 
 export function Background() {
   const ballRef = useRef<HTMLDivElement>(null)
@@ -15,11 +16,17 @@ export function Background() {
       computerPaddleRef.current &&
       !gameState.isGameRunning
     ) {
+      const options: GameOptions = {
+        gameMode: 'watch',
+        isFixedVelocity: true,
+        gameStartTimer: 1000,
+      }
+
       setUp(
-        ballRef.current as HTMLDivElement,
-        playerPaddleRef.current as HTMLDivElement,
-        computerPaddleRef.current as HTMLDivElement,
-        { isWatch: true, isFixedVelocity: true, gameStartTimer: 1000 }
+        ballRef.current,
+        playerPaddleRef.current,
+        computerPaddleRef.current,
+        options
       )
 
       start()

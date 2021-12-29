@@ -19,13 +19,13 @@
 
 .home-content {
   width: clamp(700px, 50%, 1200px);
-  gap: 64px;
+  gap: 28px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
 .home-content a {
-  padding: 64px;
+  padding: 40px;
   border-radius: 10px;
 
   font-size: 32px;
@@ -39,6 +39,11 @@
 
 .home-content a:hover {
   filter: brightness(1.1);
+}
+
+.home-content .large {
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 .home .background {

@@ -15,6 +15,9 @@ export class Paddle {
   }
 
   set position(value: number) {
+    if (value < 0) value = 0
+    if (value > 100) value = 100
+
     this.paddleElem.style.setProperty('--position', String(value))
   }
 

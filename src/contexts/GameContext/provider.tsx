@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Game, GameOptions } from '@/game'
 import { GameContext, GameContextProviderProps, GameState } from '.'
 
@@ -7,8 +7,7 @@ export function GameProvider({ children }: GameContextProviderProps) {
     isGameRunning: false,
     score: [0, 0],
   })
-
-  const game = new Game(setGameState)
+  const game = useRef<Game>(new Game(setGameState))
 
   function setUp(
     ballRef: HTMLDivElement,
@@ -16,7 +15,7 @@ export function GameProvider({ children }: GameContextProviderProps) {
     computerPaddleRef: HTMLDivElement,
     options: GameOptions
   ) {
-    game.setUp({ ballRef, playerPaddleRef, computerPaddleRef, options })
+    game.current.setUp({ ballRef, playerPaddleRef, computerPaddleRef, options })
 
     setGameState((prevState) => ({
       ...prevState,
@@ -25,7 +24,7 @@ export function GameProvider({ children }: GameContextProviderProps) {
   }
 
   function start() {
-    game.start()
+    game.current.start()
   }
 
   return (

@@ -10,7 +10,11 @@ export type GameSetUp = {
 }
 
 export type GameOptions = {
-  isWatch?: boolean
+  gameMode?: GameMode
   isFixedVelocity?: boolean
   gameStartTimer?: number
 }
+
+export type GameMode = 'single' | 'multiplayer' | 'watch'
+
+export const gameModes: GameMode[] = ['single', 'multiplayer', 'watch']

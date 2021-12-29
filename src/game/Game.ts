@@ -11,13 +11,16 @@ import {
 
 export class Game {
   setGameState: React.Dispatch<React.SetStateAction<GameState>>
+  controlledPaddles: Array<Paddle> = []
+  computerPaddles: Array<Paddle> = []
 
   ball: Ball = null as any
-  playerPaddle: Paddle = null as any
-  computerPaddle: Paddle = null as any
+  paddle1: Paddle = null as any
+  paddle2: Paddle = null as any
 
   score: Score = [0, 0]
   options: GameOptions = {}
+  isWatch: boolean = false
 
   lastTime: number = 0
   timeStarted: number = 0
@@ -28,14 +31,29 @@ export class Game {
 
   setUp({ ballRef, playerPaddleRef, computerPaddleRef, options }: GameSetUp) {
     this.ball = new Ball(ballRef, !!options?.isFixedVelocity)
-    this.playerPaddle = new Paddle(playerPaddleRef)
-    this.computerPaddle = new Paddle(computerPaddleRef)
+    this.paddle1 = new Paddle(playerPaddleRef)
+    this.paddle2 = new Paddle(computerPaddleRef)
     this.options = options ?? {}
+
+    switch (options?.gameMode) {
+      case 'watch':
+        this.controlledPaddles = []
+        this.computerPaddles = [this.paddle1, this.paddle2]
+        this.isWatch = true
+        break
+      case 'multiplayer':
+        this.controlledPaddles = [this.paddle1, this.paddle2]
+        this.computerPaddles = []
+        break
+      default:
+        this.controlledPaddles = [this.paddle1]
+        this.computerPaddles = [this.paddle2]
+    }
   }
 
   start() {
     setTimeout(() => {
-      !this.options.isWatch && setUpListeners(this.playerPaddle)
+      !this.isWatch && setUpListeners(this.controlledPaddles)
       window.requestAnimationFrame((time) => this.update(time))
     }, this.options.gameStartTimer ?? GAME_START_TIMER)
   }
@@ -44,12 +62,10 @@ export class Game {
     if (this.lastTime != 0) {
       const delta = time - this.lastTime
 
-      this.options.isWatch && this.playerPaddle.update(delta, this.ball.y)
-      this.computerPaddle.update(delta, this.ball.y)
-      this.ball.update(delta, [
-        this.playerPaddle.rect(),
-        this.computerPaddle.rect(),
-      ])
+      this.ball.update(delta, [this.paddle1.rect(), this.paddle2.rect()])
+      this.computerPaddles.forEach((paddle) => {
+        paddle.update(delta, this.ball.y)
+      })
 
       if (this.isLose()) this.handleLose()
     }
@@ -81,6 +97,6 @@ export class Game {
     }
 
     this.ball.reset()
-    this.computerPaddle.reset()
+    this.computerPaddles.forEach((paddle) => paddle.reset())
   }
 }

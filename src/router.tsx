@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { GameProvider } from './contexts'
+import { GameMode, gameModes } from './game'
 import { Game, Home } from './pages'
 
 export function Router() {
@@ -7,7 +8,6 @@ export function Router() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
-
         <Route
           path='/play'
           element={
@@ -17,14 +17,17 @@ export function Router() {
           }
         />
 
-        <Route
-          path='/watch'
-          element={
-            <GameProvider>
-              <Game isWatch />
-            </GameProvider>
-          }
-        />
+        {gameModes.map((mode: GameMode) => (
+          <Route
+            key={mode}
+            path={`/${mode === 'single' ? 'play' : mode}`}
+            element={
+              <GameProvider>
+                <Game gameMode={mode} />
+              </GameProvider>
+            }
+          />
+        ))}
       </Routes>
     </BrowserRouter>
   )

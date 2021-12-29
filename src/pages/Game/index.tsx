@@ -1,12 +1,13 @@
 import { useRef, useEffect } from 'react'
 import { Ball, Paddle, Score, Timer } from '@/components'
 import { useGame } from '@/contexts'
+import { GameMode } from '@/game'
 
 type GameProps = {
-  isWatch?: boolean
+  gameMode?: GameMode
 }
 
-export function Game({ isWatch = false }: GameProps) {
+export function Game({ gameMode = 'single' }: GameProps) {
   const ballRef = useRef<HTMLDivElement>(null)
   const playerPaddleRef = useRef<HTMLDivElement>(null)
   const computerPaddleRef = useRef<HTMLDivElement>(null)
@@ -23,7 +24,7 @@ export function Game({ isWatch = false }: GameProps) {
         ballRef.current as HTMLDivElement,
         playerPaddleRef.current as HTMLDivElement,
         computerPaddleRef.current as HTMLDivElement,
-        { isWatch }
+        { gameMode }
       )
 
       start()
