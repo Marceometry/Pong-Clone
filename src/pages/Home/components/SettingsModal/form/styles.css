@@ -8,7 +8,7 @@
   flex-direction: column;
 }
 
-.settings-form fieldset {
+.settings-form > div {
   width: 100%;
   border: none;
 
@@ -18,15 +18,9 @@
   flex-direction: column;
 }
 
-.settings-form fieldset > div {
+.settings-form > div > form {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.settings-form fieldset > div > div {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }
