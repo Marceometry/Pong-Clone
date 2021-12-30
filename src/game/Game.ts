@@ -1,5 +1,5 @@
 import { GameState } from '@/contexts'
-import { GAME_START_TIMER, Score } from '@/utils'
+import { GAME_START_TIMER, GAME_START_TIMER_DELAY, Score } from '@/utils'
 import {
   Ball,
   GameConstructor,
@@ -55,7 +55,7 @@ export class Game {
     setTimeout(() => {
       !this.isWatch && setUpListeners(this.controlledPaddles)
       window.requestAnimationFrame((time) => this.update(time))
-    }, this.options.gameStartTimer ?? GAME_START_TIMER)
+    }, this.options.gameStartTimer ?? GAME_START_TIMER + GAME_START_TIMER_DELAY)
   }
 
   update(time: number) {

@@ -1,8 +1,9 @@
+import { GAME_START_TIMER } from '@/utils'
 import { useState, useEffect } from 'react'
 import './styles.css'
 
 export function Timer() {
-  const [timer, setTimer] = useState(3)
+  const [timer, setTimer] = useState(GAME_START_TIMER / 1000)
 
   useEffect(() => {
     const id = setTimeout(() => {
