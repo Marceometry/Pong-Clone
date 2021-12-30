@@ -1,6 +1,6 @@
 .settings-form {
   width: 40%;
-  margin-top: 40px;
+  margin-top: 64px;
 
   display: flex;
   align-items: center;
@@ -8,19 +8,23 @@
   flex-direction: column;
 }
 
-.settings-form > div {
+.settings-form .form {
   width: 100%;
-  border: none;
+  gap: 48px;
+  display: flex;
+  flex-direction: column;
+}
 
-  gap: 16px;
+.settings-form section {
+  width: 100%;
+  gap: 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.settings-form > div > form {
+.settings-form section > div {
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }

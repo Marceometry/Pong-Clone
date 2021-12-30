@@ -25,7 +25,7 @@
   width: clamp(700px, 60%, 90%);
   background-color: var(--foreground-color);
   border-radius: 10px;
-  padding: 32px;
+  padding: 32px 32px 56px;
 
   display: flex;
   align-items: center;
