@@ -1,3 +1,4 @@
+import { CloseIcon } from '@/assets'
 import { SettingsForm } from './form'
 import './styles.css'
 
@@ -16,6 +17,8 @@ export function SettingsModal({ isOpen, setIsOpen }: ModalProps) {
         onClick={(e) => e.stopPropagation()}
         className='settings-modal-content'
       >
+        <CloseIcon onClick={() => setIsOpen(false)} />
+
         <h1>Settings</h1>
 
         <SettingsForm />
