@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react'
 import { Ball, Paddle } from '@/components'
 import { useGame } from '@/contexts'
 import { GameOptions } from '@/game'
+import './styles.css'
 
 export function Background() {
   const ballRef = useRef<HTMLDivElement>(null)

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { GameProvider } from '@/contexts'
 import { SettingsIcon } from '@/assets'
-import { Background } from './background'
+import { Background } from './components'
 import './styles.css'
 
 export function Home() {
