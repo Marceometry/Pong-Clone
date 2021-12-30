@@ -1,8 +1,11 @@
 import { useRef, useState } from 'react'
 import { Game, GameOptions } from '@/game'
 import { GameContext, GameContextProviderProps, GameState } from '.'
+import { useSettings } from '..'
 
 export function GameProvider({ children }: GameContextProviderProps) {
+  const { settings } = useSettings()
+
   const [gameState, setGameState] = useState<GameState>({
     isGameRunning: false,
     score: [0, 0],
@@ -15,7 +18,17 @@ export function GameProvider({ children }: GameContextProviderProps) {
     computerPaddleRef: HTMLDivElement,
     options: GameOptions
   ) {
-    game.current.setUp({ ballRef, playerPaddleRef, computerPaddleRef, options })
+    const fullOptions = {
+      ...options,
+      ballVelocityIncrease: settings.ballVelocityIncrease,
+    }
+
+    game.current.setUp({
+      ballRef,
+      playerPaddleRef,
+      computerPaddleRef,
+      options: fullOptions,
+    })
 
     setGameState((prevState) => ({
       ...prevState,

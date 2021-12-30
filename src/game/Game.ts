@@ -30,7 +30,11 @@ export class Game {
   }
 
   setUp({ ballRef, playerPaddleRef, computerPaddleRef, options }: GameSetUp) {
-    this.ball = new Ball(ballRef, !!options?.isFixedVelocity)
+    this.ball = new Ball(
+      ballRef,
+      !!options?.isFixedVelocity,
+      options?.ballVelocityIncrease
+    )
     this.paddle1 = new Paddle(playerPaddleRef)
     this.paddle2 = new Paddle(computerPaddleRef)
     this.options = options ?? {}

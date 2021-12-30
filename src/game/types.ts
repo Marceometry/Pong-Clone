@@ -12,6 +12,7 @@ export type GameSetUp = {
 export type GameOptions = {
   gameMode?: GameMode
   isFixedVelocity?: boolean
+  ballVelocityIncrease?: number
   gameStartTimer?: number
 }
 

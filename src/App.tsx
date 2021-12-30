@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react'
 import { setHueColor } from './utils'
 import { Router } from './router'
 import './styles/main.css'
+import { SettingsProvider } from './contexts'
 
 export function App() {
   const animationId = useRef(0)
@@ -19,5 +20,9 @@ export function App() {
     animationId.current = window.requestAnimationFrame(handleHueColor)
   }
 
-  return <Router />
+  return (
+    <SettingsProvider>
+      <Router />
+    </SettingsProvider>
+  )
 }
