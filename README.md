@@ -23,6 +23,7 @@ Baseado no [video](https://www.youtube.com/watch?v=PeY6lXPrPaA&t=2109s) do canal
 
 - Menu de modos de jogo animado
 - Modo de jogo `Watch Mode`
+- Modo de jogo `Multiplayer` utilizando o teclado
 - Timing antes de começar a partida
 
 ## 🚀 Como executar
