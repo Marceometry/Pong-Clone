@@ -19,3 +19,7 @@ body {
   font-family: 'Nunito', sans-serif;
   background-color: var(--background-color);
 }
+
+svg {
+  fill: var(--foreground-color);
+}

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { GameProvider } from '@/contexts'
+import { SettingsIcon } from '@/assets'
 import { Background } from './background'
 import './styles.css'
 
@@ -7,6 +8,8 @@ export function Home() {
   return (
     <div className='home'>
       <h1>Pong Clone</h1>
+
+      <SettingsIcon />
 
       <div className='home-content'>
         <Link to='/play' className='large'>
