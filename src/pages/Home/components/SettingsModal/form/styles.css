@@ -1,0 +1,32 @@
+.settings-form {
+  width: 40%;
+  margin-top: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.settings-form fieldset {
+  width: 100%;
+  border: none;
+
+  gap: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.settings-form fieldset > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settings-form fieldset > div > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

@@ -1,3 +1,4 @@
+import { SettingsForm } from './form'
 import './styles.css'
 
 type ModalProps = {
@@ -16,6 +17,8 @@ export function SettingsModal({ isOpen, setIsOpen }: ModalProps) {
         className='settings-modal-content'
       >
         <h1>Settings</h1>
+
+        <SettingsForm />
       </div>
     </div>
   )
