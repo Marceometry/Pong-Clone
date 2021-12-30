@@ -1,5 +1,14 @@
 import { ReactNode } from 'react'
 
+export type BallVelocityIncreaseModeKey = 'slow' | 'medium' | 'fast' | 'insane'
+
+export type BallVelocityIncreaseModesKeys = {
+  SLOW: 'slow'
+  MEDIUM: 'medium'
+  FAST: 'fast'
+  INSANE: 'insane'
+}
+
 export type BallVelocityIncreaseModes = {
   slow: number
   medium: number
@@ -8,7 +17,7 @@ export type BallVelocityIncreaseModes = {
 }
 
 export type Settings = {
-  ballVelocityIncrease: number
+  ballVelocityIncrease: BallVelocityIncreaseModeKey
 }
 
 export type SettingsContextData = {

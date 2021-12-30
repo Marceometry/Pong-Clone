@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { Game, GameOptions } from '@/game'
 import { GameContext, GameContextProviderProps, GameState } from '.'
-import { useSettings } from '..'
+import { ballVelocityIncreaseModes, useSettings } from '..'
 
 export function GameProvider({ children }: GameContextProviderProps) {
   const { settings } = useSettings()
@@ -20,7 +20,8 @@ export function GameProvider({ children }: GameContextProviderProps) {
   ) {
     const fullOptions = {
       ...options,
-      ballVelocityIncrease: settings.ballVelocityIncrease,
+      ballVelocityIncrease:
+        ballVelocityIncreaseModes[settings.ballVelocityIncrease],
     }
 
     game.current.setUp({

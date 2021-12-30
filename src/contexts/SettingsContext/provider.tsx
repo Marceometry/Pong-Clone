@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {
-  ballVelocityIncreaseModes,
+  ballVelocityIncreaseModesKeys,
   Settings,
   SettingsContext,
   SettingsProviderProps,
@@ -8,7 +8,7 @@ import {
 
 export function SettingsProvider({ children }: SettingsProviderProps) {
   const [settings, setSettings] = useState<Settings>({
-    ballVelocityIncrease: ballVelocityIncreaseModes.medium,
+    ballVelocityIncrease: ballVelocityIncreaseModesKeys.MEDIUM,
   })
 
   return (
