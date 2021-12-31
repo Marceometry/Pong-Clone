@@ -11,13 +11,15 @@ export function isCollision(rect1: DOMRect, rect2: DOMRect): boolean {
   )
 }
 
-export function setHueColor(delta: number = 0) {
-  const hue = parseFloat(
-    getComputedStyle(document.documentElement).getPropertyValue('--hue')
-  )
+export function getHueColor() {
+  return getComputedStyle(document.documentElement).getPropertyValue('--hue')
+}
 
-  document.documentElement.style.setProperty(
-    '--hue',
-    String(hue + delta * 0.01)
-  )
+export function setHueColor(hue: string = '0') {
+  document.documentElement.style.setProperty('--hue', hue)
+}
+
+export function setRainbowBackground(delta: number = 20) {
+  const hue = parseFloat(getHueColor())
+  setHueColor(String(hue + delta * 0.01))
 }

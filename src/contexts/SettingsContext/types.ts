@@ -18,11 +18,14 @@ export type BallVelocityIncreaseModes = {
 
 export type Settings = {
   ballVelocityIncrease: BallVelocityIncreaseModeKey
+  hueColor: string
 }
 
 export type SettingsContextData = {
   settings: Settings
   setSettings: React.Dispatch<React.SetStateAction<Settings>>
+  handleRainbowBackground: () => void
+  cancelRainbowBackground: () => void
 }
 
 export type SettingsProviderProps = {
