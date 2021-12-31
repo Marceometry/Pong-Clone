@@ -17,11 +17,12 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Baseado no [video](https://www.youtube.com/watch?v=PeY6lXPrPaA&t=2109s) do canal [Web Dev Simplified](https://www.youtube.com/c/WebDevSimplified/videos), que fez o jogo Pong utilizando Vanilla JavaScript, esta versão foi adaptada para React com Typescript.
+Baseado no [video](https://www.youtube.com/watch?v=PeY6lXPrPaA) do canal [Web Dev Simplified](https://www.youtube.com/c/WebDevSimplified/videos), que fez o jogo Pong utilizando Vanilla JavaScript, esta versão foi adaptada para React com Typescript.
 
 ## 💣 Funcionalidades
 
 - Menu de modos de jogo animado
+- Modal de configurações onde é possível personalizar o jogo
 - Modo de jogo `Watch Mode`
 - Modo de jogo `Multiplayer` utilizando o teclado
 - Timing antes de começar a partida
