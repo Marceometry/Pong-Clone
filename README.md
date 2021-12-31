@@ -21,6 +21,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
+<h4>Acesse em: https://pong-clone.vercel.app</h4>
+
 Baseado no [video](https://www.youtube.com/watch?v=PeY6lXPrPaA) do canal [Web Dev Simplified](https://www.youtube.com/c/WebDevSimplified/videos), que fez o jogo Pong utilizando Vanilla JavaScript, esta versão foi adaptada para React com Typescript.
 
 ## 💣 Funcionalidades
