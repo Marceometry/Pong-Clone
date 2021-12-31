@@ -8,6 +8,10 @@
   <a href="#-como-executar">Como executar</a>
 </p>
 
+<p align="center">
+  <img alt="Project Mockup" src=".github/mockup.png" width="100%">
+</p>
+
 ## 🧪 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
