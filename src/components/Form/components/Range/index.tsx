@@ -5,15 +5,22 @@ import { useState } from 'react'
 export type RangeProps = {
   name: string
   defaultValue: string
+  disabled: boolean
   handleChange: (value: string) => void
 }
 
-export function Range({ name, defaultValue, handleChange }: RangeProps) {
+export function Range({
+  name,
+  defaultValue,
+  disabled,
+  handleChange,
+}: RangeProps) {
   const [value, setValue] = useState(defaultValue)
 
   return (
     <div className='range'>
       <input
+        disabled={disabled}
         type='range'
         max={360}
         id={name}
