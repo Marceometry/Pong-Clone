@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Form } from '@/components'
 import {
   BallVelocityIncreaseModeKey,
@@ -5,16 +6,41 @@ import {
   useSettings,
 } from '@/contexts'
 import './styles.css'
+import { getHueColor, setHueColor } from '@/utils'
 
 export function SettingsForm() {
-  const { settings, setSettings } = useSettings()
+  const [isRainbowColorsChecked, setIsRainbowColorsChecked] = useState(true)
+  const {
+    settings,
+    setSettings,
+    handleRainbowBackground,
+    cancelRainbowBackground,
+  } = useSettings()
 
-  function handleCheck(checked: boolean, value: BallVelocityIncreaseModeKey) {
+  function handleBallVelocityIncreaseCheck(
+    checked: boolean,
+    value: BallVelocityIncreaseModeKey
+  ) {
     if (!checked) return
 
-    setSettings({
+    setSettings((prevSettings) => ({
+      ...prevSettings,
       ballVelocityIncrease: value,
-    })
+    }))
+  }
+
+  function handleRainbowColors(checked: boolean) {
+    checked ? handleRainbowBackground() : cancelRainbowBackground()
+    setIsRainbowColorsChecked(checked)
+  }
+
+  function handleChangeColor(value: string) {
+    setHueColor(value)
+
+    setSettings((prevSettings) => ({
+      ...prevSettings,
+      hueColor: value,
+    }))
   }
 
   return (
@@ -28,7 +54,7 @@ export function SettingsForm() {
               label='Slow'
               group='ballVelocityIncrease'
               name={ballVelocityIncreaseModesKeys.SLOW}
-              handleCheck={handleCheck}
+              handleCheck={handleBallVelocityIncreaseCheck}
               checked={
                 settings.ballVelocityIncrease ===
                 ballVelocityIncreaseModesKeys.SLOW
@@ -39,7 +65,7 @@ export function SettingsForm() {
               label='Medium'
               group='ballVelocityIncrease'
               name={ballVelocityIncreaseModesKeys.MEDIUM}
-              handleCheck={handleCheck}
+              handleCheck={handleBallVelocityIncreaseCheck}
               checked={
                 settings.ballVelocityIncrease ===
                 ballVelocityIncreaseModesKeys.MEDIUM
@@ -50,7 +76,7 @@ export function SettingsForm() {
               label='Fast'
               group='ballVelocityIncrease'
               name={ballVelocityIncreaseModesKeys.FAST}
-              handleCheck={handleCheck}
+              handleCheck={handleBallVelocityIncreaseCheck}
               checked={
                 settings.ballVelocityIncrease ===
                 ballVelocityIncreaseModesKeys.FAST
@@ -61,11 +87,31 @@ export function SettingsForm() {
               label='Insane'
               group='ballVelocityIncrease'
               name={ballVelocityIncreaseModesKeys.INSANE}
-              handleCheck={handleCheck}
+              handleCheck={handleBallVelocityIncreaseCheck}
               checked={
                 settings.ballVelocityIncrease ===
                 ballVelocityIncreaseModesKeys.INSANE
               }
+            />
+          </div>
+        </section>
+
+        <section>
+          <h2>Color Scheme</h2>
+
+          <div>
+            <Form.Checkbox
+              name='rainbow'
+              label='Rainbow'
+              checked={isRainbowColorsChecked}
+              handleCheck={(checked: boolean) => handleRainbowColors(checked)}
+            />
+
+            <Form.Range
+              name='colorScheme'
+              defaultValue={getHueColor()}
+              disabled={isRainbowColorsChecked}
+              handleChange={handleChangeColor}
             />
           </div>
         </section>
