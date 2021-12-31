@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { Form } from '@/components'
+import { getHueColor, setHueColor } from '@/utils'
 import {
   BallVelocityIncreaseModeKey,
   ballVelocityIncreaseModesKeys,
-  PADDLE_DEFAULT_SIZE,
   useSettings,
 } from '@/contexts'
 import './styles.css'
-import { getHueColor, setHueColor } from '@/utils'
 
 export function SettingsForm() {
   const {
@@ -59,7 +58,7 @@ export function SettingsForm() {
 
   return (
     <div className='settings-form'>
-      <Form.Wrapper handleSubmit={() => {}}>
+      <Form.Wrapper>
         <section>
           <h2>Ball Velocity Increase</h2>
 

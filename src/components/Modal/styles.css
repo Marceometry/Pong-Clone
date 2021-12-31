@@ -1,4 +1,4 @@
-.settings-modal-overlay {
+.modal-overlay {
   opacity: 0;
   z-index: -1;
   transition-duration: 0.2s;
@@ -16,12 +16,12 @@
   top: 0;
 }
 
-.settings-modal-overlay.open {
+.modal-overlay.open {
   opacity: 1;
   z-index: 1;
 }
 
-.settings-modal-content {
+.modal-content {
   width: clamp(700px, 60%, 90%);
   background-color: var(--foreground-color);
   border-radius: 10px;
@@ -34,11 +34,11 @@
   flex-direction: column;
 }
 
-.settings-modal-content * {
-  color: var(--background-color);
-}
-
-.settings-modal-content svg {
+.modal-content .close-button {
   fill: var(--background-color);
   right: 40px !important;
+}
+
+.modal-content * {
+  color: var(--background-color);
 }

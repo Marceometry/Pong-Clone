@@ -1,9 +1,8 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GameProvider } from '@/contexts'
-import { SettingsIcon } from '@/assets'
-import { Background, SettingsModal } from './components'
+import { Background, Settings } from './components'
 import './styles.css'
-import { useState } from 'react'
 
 export function Home() {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
@@ -23,8 +22,7 @@ export function Home() {
 
       <span>Made by Marcelino Teixeira</span>
 
-      <SettingsIcon onClick={() => setIsSettingsModalOpen(true)} />
-      <SettingsModal
+      <Settings
         isOpen={isSettingsModalOpen}
         setIsOpen={setIsSettingsModalOpen}
       />
