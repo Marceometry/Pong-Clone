@@ -10,20 +10,17 @@ import './styles.css'
 import { getHueColor, setHueColor } from '@/utils'
 
 export function SettingsForm() {
-  const [isRainbowColorsChecked, setIsRainbowColorsChecked] = useState(true)
   const {
     settings,
     setSettings,
     handleRainbowBackground,
     cancelRainbowBackground,
   } = useSettings()
+  const [isRainbowColorsChecked, setIsRainbowColorsChecked] = useState(
+    settings.colorScheme.isRainbow
+  )
 
-  function handleBallVelocityIncreaseCheck(
-    checked: boolean,
-    value: BallVelocityIncreaseModeKey
-  ) {
-    if (!checked) return
-
+  function handleBallVelocityIncreaseCheck(value: BallVelocityIncreaseModeKey) {
     setSettings((prevSettings) => ({
       ...prevSettings,
       ballVelocityIncrease: value,
@@ -40,14 +37,23 @@ export function SettingsForm() {
   function handleRainbowColors(checked: boolean) {
     checked ? handleRainbowBackground() : cancelRainbowBackground()
     setIsRainbowColorsChecked(checked)
+    setSettings((prevSettings) => ({
+      ...prevSettings,
+      colorScheme: {
+        ...prevSettings.colorScheme,
+        isRainbow: checked,
+      },
+    }))
   }
 
   function handleChangeColor(value: string) {
     setHueColor(value)
-
     setSettings((prevSettings) => ({
       ...prevSettings,
-      hueColor: value,
+      colorScheme: {
+        isRainbow: false,
+        hueColor: value,
+      },
     }))
   }
 

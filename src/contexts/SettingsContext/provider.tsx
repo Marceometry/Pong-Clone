@@ -12,7 +12,10 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
   const [settings, setSettings] = useState<Settings>({
     ballVelocityIncrease: ballVelocityIncreaseModesKeys.MEDIUM,
     paddleSize: PADDLE_DEFAULT_SIZE,
-    hueColor: getHueColor(),
+    colorScheme: {
+      isRainbow: true,
+      hueColor: getHueColor(),
+    },
   })
   const animationId = useRef(0)
 

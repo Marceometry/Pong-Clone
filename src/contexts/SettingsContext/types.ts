@@ -19,7 +19,10 @@ export type BallVelocityIncreaseModes = {
 export type Settings = {
   ballVelocityIncrease: BallVelocityIncreaseModeKey
   paddleSize: number
-  hueColor: string
+  colorScheme: {
+    isRainbow: boolean
+    hueColor: string
+  }
 }
 
 export type SettingsContextData = {

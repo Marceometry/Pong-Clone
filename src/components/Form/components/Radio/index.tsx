@@ -6,7 +6,7 @@ export type RadioProps = {
   label: string
   group: string
   checked: boolean
-  handleCheck: (checked: boolean, value: BallVelocityIncreaseModeKey) => void
+  handleCheck: (value: BallVelocityIncreaseModeKey) => void
 }
 
 export function Radio({
@@ -25,10 +25,7 @@ export function Radio({
         value={name}
         checked={checked}
         onChange={(e) =>
-          handleCheck(
-            e.target.checked,
-            e.target.value as BallVelocityIncreaseModeKey
-          )
+          handleCheck(e.target.value as BallVelocityIncreaseModeKey)
         }
       />
       <label htmlFor={name}>{label}</label>
