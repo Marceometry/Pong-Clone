@@ -3,6 +3,7 @@ import { Form } from '@/components'
 import {
   BallVelocityIncreaseModeKey,
   ballVelocityIncreaseModesKeys,
+  PADDLE_DEFAULT_SIZE,
   useSettings,
 } from '@/contexts'
 import './styles.css'
@@ -26,6 +27,13 @@ export function SettingsForm() {
     setSettings((prevSettings) => ({
       ...prevSettings,
       ballVelocityIncrease: value,
+    }))
+  }
+
+  function handlePaddleSize(value: string) {
+    setSettings((prevSettings) => ({
+      ...prevSettings,
+      paddleSize: parseFloat(value),
     }))
   }
 
@@ -97,6 +105,20 @@ export function SettingsForm() {
         </section>
 
         <section>
+          <h2>Paddle Size</h2>
+
+          <div>
+            <Form.Range
+              min={1}
+              max={70}
+              name='paddleSize'
+              defaultValue={String(settings.paddleSize)}
+              handleChange={handlePaddleSize}
+            />
+          </div>
+        </section>
+
+        <section>
           <h2>Color Scheme</h2>
 
           <div>
@@ -108,6 +130,7 @@ export function SettingsForm() {
             />
 
             <Form.Range
+              max={360}
               name='colorScheme'
               defaultValue={getHueColor()}
               disabled={isRainbowColorsChecked}

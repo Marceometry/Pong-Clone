@@ -5,13 +5,19 @@ import { useState } from 'react'
 export type RangeProps = {
   name: string
   defaultValue: string
-  disabled: boolean
+  max?: number
+  min?: number
+  step?: number
+  disabled?: boolean
   handleChange: (value: string) => void
 }
 
 export function Range({
   name,
   defaultValue,
+  max,
+  min,
+  step,
   disabled,
   handleChange,
 }: RangeProps) {
@@ -22,7 +28,9 @@ export function Range({
       <input
         disabled={disabled}
         type='range'
-        max={360}
+        min={min ?? 0}
+        max={max ?? 100}
+        step={step ?? 1}
         id={name}
         value={value}
         defaultValue={defaultValue}

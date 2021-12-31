@@ -25,6 +25,7 @@
 
 .settings-form section > div {
   width: 100%;
+  gap: 32px;
   display: flex;
   justify-content: space-between;
 }
