@@ -1,0 +1,12 @@
+.form .checkbox {
+  width: 100%;
+  gap: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form .checkbox label,
+.form .checkbox input {
+  cursor: pointer;
+}
