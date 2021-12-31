@@ -20,6 +20,7 @@ export function GameProvider({ children }: GameContextProviderProps) {
   ) {
     const fullOptions = {
       ...options,
+      paddleSize: settings.paddleSize,
       ballVelocityIncrease:
         ballVelocityIncreaseModes[settings.ballVelocityIncrease],
     }

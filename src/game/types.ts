@@ -13,6 +13,7 @@ export type GameOptions = {
   gameMode?: GameMode
   isFixedVelocity?: boolean
   ballVelocityIncrease?: number
+  paddleSize?: number
   gameStartTimer?: number
 }
 

@@ -1,11 +1,19 @@
-import { RefObject } from 'react'
+import { useSettings } from '@/contexts'
 import './styles.css'
 
 export type PaddleProps = {
-  paddleRef: RefObject<HTMLDivElement>
+  paddleRef: React.RefObject<HTMLDivElement>
   side?: 'left' | 'right'
 }
 
 export function Paddle({ paddleRef, side = 'left' }: PaddleProps) {
-  return <div ref={paddleRef} className={`paddle ${side}`} />
+  const { settings } = useSettings()
+
+  return (
+    <div
+      ref={paddleRef}
+      className={`paddle ${side}`}
+      style={{ height: `${settings.paddleSize}vh` }}
+    />
+  )
 }

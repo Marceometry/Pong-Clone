@@ -1,3 +1,4 @@
+import { PADDLE_DEFAULT_SIZE } from '@/contexts'
 import { Paddle } from '.'
 
 const playerMouseMove = (e: MouseEvent, paddle: Paddle) => {
@@ -7,22 +8,28 @@ const playerMouseMove = (e: MouseEvent, paddle: Paddle) => {
 const movePlayer = (
   e: KeyboardEvent,
   paddle: Paddle,
-  keys: [string, string]
+  keys: [string, string],
+  paddleSize: number
 ) => {
   if (e.key === keys[0]) {
-    paddle.position = paddle.position - 10
+    paddle.position = paddle.position - paddleSize
   }
 
   if (e.key === keys[1]) {
-    paddle.position = paddle.position + 10
+    paddle.position = paddle.position + paddleSize
   }
 }
 
-export function setUpListeners(paddles: Paddle[]) {
+export function setUpListeners(paddles: Paddle[], paddleSize?: number) {
   if (paddles.length === 2) {
     document.addEventListener('keydown', (e) => {
-      movePlayer(e, paddles[0], ['w', 's'])
-      movePlayer(e, paddles[1], ['ArrowUp', 'ArrowDown'])
+      movePlayer(e, paddles[0], ['w', 's'], paddleSize ?? PADDLE_DEFAULT_SIZE)
+      movePlayer(
+        e,
+        paddles[1],
+        ['ArrowUp', 'ArrowDown'],
+        paddleSize ?? PADDLE_DEFAULT_SIZE
+      )
     })
   } else {
     document.addEventListener('mousemove', (e) => {

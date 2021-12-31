@@ -18,6 +18,7 @@ export type BallVelocityIncreaseModes = {
 
 export type Settings = {
   ballVelocityIncrease: BallVelocityIncreaseModeKey
+  paddleSize: number
   hueColor: string
 }
 

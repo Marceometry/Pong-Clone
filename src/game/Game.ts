@@ -57,7 +57,8 @@ export class Game {
 
   start() {
     setTimeout(() => {
-      !this.isWatch && setUpListeners(this.controlledPaddles)
+      !this.isWatch &&
+        setUpListeners(this.controlledPaddles, this.options.paddleSize)
       window.requestAnimationFrame((time) => this.update(time))
     }, this.options.gameStartTimer ?? GAME_START_TIMER + GAME_START_TIMER_DELAY)
   }

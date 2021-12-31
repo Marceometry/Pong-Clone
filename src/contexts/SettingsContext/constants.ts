@@ -13,3 +13,5 @@ export const ballVelocityIncreaseModesKeys: BallVelocityIncreaseModesKeys = {
   FAST: 'fast',
   INSANE: 'insane',
 }
+
+export const PADDLE_DEFAULT_SIZE = 10
