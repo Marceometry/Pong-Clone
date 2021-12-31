@@ -16,18 +16,20 @@
   margin-top: 24px;
 }
 
-.home svg {
-  width: 56px;
-  height: 56px;
-  transition-property: filter, transform;
-  transition-duration: 0.4s;
-  cursor: pointer;
+.home button {
   position: absolute;
   right: 5vw;
   top: 32px;
 }
 
-.home svg:hover {
+.home button svg {
+  width: 56px;
+  height: 56px;
+  transition-property: filter, transform;
+  transition-duration: 0.4s;
+}
+
+.home button svg:hover {
   filter: brightness(1.3);
   transform: rotate(90deg);
 }

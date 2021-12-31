@@ -35,8 +35,11 @@
 }
 
 .modal-content .close-button {
-  fill: var(--background-color);
   right: 40px !important;
+}
+
+.modal-content .close-button svg {
+  fill: var(--background-color);
 }
 
 .modal-content * {

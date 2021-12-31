@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { CloseIcon } from '@/assets'
 import './styles.css'
+import { Button } from '..'
 
 type ModalProps = {
   children: ReactNode
@@ -16,7 +17,11 @@ export function Modal({ children, title, isOpen, setIsOpen }: ModalProps) {
       className={`modal-overlay ${isOpen ? 'open' : ''}`}
     >
       <div onClick={(e) => e.stopPropagation()} className='modal-content'>
-        <CloseIcon className='close-button' onClick={() => setIsOpen(false)} />
+        <Button
+          icon={<CloseIcon />}
+          className='close-button'
+          onClick={() => setIsOpen(false)}
+        />
 
         <h1>{title}</h1>
 
